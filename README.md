@@ -64,35 +64,6 @@ A modern, responsive portfolio website showcasing my journey as an IT Systems st
 You can view the portfolio online here:  
 **[Live Demo](https://fatinbenchiba.github.io)**  
 
-## 🎨 Key Sections
-
-### Hero Section
-- Animated typing text effect
-- Interactive technology orbit with rotating icons
-- Social media links
-- Download CV button
-
-### About Section
-- Personal introduction
-- Skills grid with technology tags
-- Animated code snippet
-
-### Projects Section
-- Four featured projects with:
-  - Web Services E-commerce
-  - Cibersecure Learning Portal
-  - Visual Serenity Screensaver
-  - Teacher Shift Manager App
-
-### Contact Section
-- Contact information
-- Working contact form with EmailJS integration
-- Social media links
-
----
-
-## 📫 Let's Connect
-
 ## 📫 Let's Connect
 
 <div align="center">
