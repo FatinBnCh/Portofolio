@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designify</title>
+    <link rel="shortcut icon" href="./images/icons8-responsive-web-100.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/estilos.css">
+    <meta name="theme-color" content="#2091F9">
+    <meta name="title" content="Mi página web">
+    <meta name="description" content="Hola, soy una descripción que verás cuando busques algo de mi temática en Google.">
+
+</head>
+
+<body>
+
+    <header class="hero">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h2 class="nav__title">Designify</h2>
+            </div>
+
+            <ul class="nav__link nav__link--menu">
+                <li class="nav__items">
+                    <a href="#" class="nav__links">Inicio</a>
+                </li>
+                <li class="nav__items">
+                    <a href="#" class="nav__links">Acerca de</a>
+                </li>
+                <li class="nav__items">
+                    <a href="#" class="nav__links">Contacto</a>
+                </li>
+                <li class="nav__items">
+                    <a href="#" class="nav__links">Blog</a>
+                </li>
+
+                <img src="./images/close.svg" class="nav__close">
+            </ul>
+
+            <div class="nav__menu">
+                <img src="./images/menu.svg" class="nav__img">
+            </div>
+        </nav>
+
+        <section class="hero__container container">
+            <h1 class="hero__title">Diseño que cuenta tu historia.</h1>
+            <p class="hero__paragraph">Tu visión, nuestro diseño. Creamos páginas web personalizadas 
+                para que tu marca, negocio o proyecto destaque con un estilo único y profesional.</p>
+            <a href="#services" class="cta">Comienza ahora</a>
+        </section>
+    </header>
+
+    <main>
+        <section class="container about">
+            <h2 class="subtitle">¿Qué obtendrás con nuestro servicio?</h2>
+            <p class="about__paragraph">Lleva tu presencia digital al siguiente nivel con un sitio único, diseñado según tus gustos 
+                y necesidades. Tú nos das la visión, nosotros la hacemos realidad.</p>
+
+            <div class="about__main">
+                <article class="about__icons">
+                    <img src="./images/shapes.svg" class="about__icon">
+                    <h3 class="about__title">Diseño Personalizado</h3>
+                    <p class="about__paragrah">Cada web es única, reflejando tu estilo y visión con colores, 
+                        tipografías e imágenes que se ajusten a tu marca o personalidad.</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="./images/paint.svg" class="about__icon">
+                    <h3 class="about__title">Elementos Interactivos</h3>
+                    <p class="about__paragrah">Agregamos animaciones y efectos visuales modernos para que tu 
+                        sitio sea dinámico y atractivo para los visitantes.</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="./images/nuevo.svg" class="about__icon">
+                    <h3 class="about__title">Optimización y Rendimiento</h3>
+                    <p class="about__paragrah">Páginas rápidas, adaptables a cualquier dispositivo y optimizadas para una experiencia fluida y profesional.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="testimony">
+            <div class="testimony__container container">
+                <img src="./images/leftarrow.svg" class="testimony__arrow" id="before">
+
+                <section class="testimony__body testimony__body--show" data-id="1">
+                    <div class="testimony__texts">
+                        <h2 class="subtitle">Mi nombre es Fatin Ben Chiba, <span class="testimony__course">estudiante
+                                de ASIR</span></h2>
+                        <p class="testimony__review">Soy estudiante de Administración de Sistemas Informáticos en Red, 
+                            con una sólida formación en el desarrollo web. Poseo un profundo 
+                            conocimiento en HTML, CSS y JavaScript, lo que me permite crear 
+                            interfaces web estructuradas, estilizadas y dinámicas, garantizando 
+                            experiencias digitales intuitivas y visualmente atractivas. Mi 
+                            capacidad para combinar diseño y funcionalidad me permite desarrollar 
+                            sitios optimizados, adaptativos y alineados con las mejores prácticas del 
+                            sector.</p>
+                    </div>
+
+                </section>
+
+                <section class="testimony__body" data-id="2">
+                    <div class="testimony__texts">
+                        <h2 class="subtitle">Mi nombre es Nuevo, <span class="testimony__course">lorem impsum</span></h2>
+                        <p class="testimony__review">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut est
+                            esse, asperiores eaque laborum veniam laboriosam saepe reiciendis dolorem. Cum, ratione
+                            voluptatum!</p>
+                    </div>
+                </section>
+
+
+
+                <img src="./images/rightarrow.svg" class="testimony__arrow" id="next">
+            </div>
+        </section>
+
+        <section class="services container" id="services">
+            <h2 class="subtitle">Creemos juntos tu página web ideal</h2>
+            <p class="services__description">Diseños a medida que reflejen tu esencia. Elige el servicio que necesites:</p>
+        
+            <div class="services__grid">
+                <!-- Tarjeta 1: Básico -->
+                <div class="service__card">
+                    <div class="service__header">
+                        <h3 class="service__name">Web Básica</h3>
+                        <p class="service__tag">Perfecta para empezar</p>
+                    </div>
+                    <div class="service__features">
+                        <p><i class="fas fa-check-circle"></i> Diseño responsive</p>
+                        <p><i class="fas fa-check-circle"></i> Hasta 5 secciones</p>
+                        <p><i class="fas fa-check-circle"></i> Formulario de contacto</p>
+                        <p><i class="fas fa-check-circle"></i> Optimización móvil</p>
+                    </div>
+                    <a href="#contact" class="service__cta">Solicitar información</a>
+                </div>
+        
+                <!-- Tarjeta 2: Recomendado -->
+                <div class="service__card service__card--highlight">
+                    <div class="service__header">
+                        <h3 class="service__name">Web Profesional</h3>
+                        <p class="service__tag">Lo más solicitado</p>
+                    </div>
+                    <div class="service__features">
+                        <p><i class="fas fa-check-circle"></i> Todo en Web Básica +</p>
+                        <p><i class="fas fa-check-circle"></i> Diseño personalizado</p>
+                        <p><i class="fas fa-check-circle"></i> Hasta 10 secciones</p>
+                        <p><i class="fas fa-check-circle"></i> Integración con redes</p>
+                        <p><i class="fas fa-check-circle"></i> SEO básico</p>
+                    </div>
+                    <a href="#contact" class="service__cta">Quiero esta opción</a>
+                </div>
+        
+                <!-- Tarjeta 3: Premium -->
+                <div class="service__card">
+                    <div class="service__header">
+                        <h3 class="service__name">Tienda Online</h3>
+                        <p class="service__tag">Para vender en internet</p>
+                    </div>
+                    <div class="service__features">
+                        <p><i class="fas fa-check-circle"></i> Carrito de compras</p>
+                        <p><i class="fas fa-check-circle"></i> Hasta 15 productos</p>
+                        <p><i class="fas fa-check-circle"></i> Pasarela de pagos</p>
+                        <p><i class="fas fa-check-circle"></i> Panel de administración</p>
+                    </div>
+                    <a href="#contact" class="service__cta">Contactar ahora</a>
+                </div>
+            </div>
+        
+            <div class="services__footer">
+                <p>¿Necesitas algo diferente? <a href="#contact-form">Cuéntame tu proyecto</a> y haremos un presupuesto personalizado.</p>
+            </div>
+        </section>
+
+        <section class="questions container">
+            <h2 class="subtitle">PREGUNTAS FRECUENTES</h2>
+
+            <section class="questions__container">
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title"> ¿Cuánto tiempo toma desarrollar un sitio web?
+                            <span class="questions__arrow">
+                                <img src="./images/arrow.svg" class="questions__img">
+                            </span>
+                        </h3>
+
+                        <p class="questions__show">Depende de la complejidad, pero nuestros proyectos promedio se entregan en 4-6 semanas</p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Ofrecen soporte post-lanzamiento?
+                            <span class="questions__arrow">
+                                <img src="./images/arrow.svg" class="questions__img">
+                            </span>
+                        </h3>
+
+                        <p class="questions__show">¡Sí! Todos nuestros paquetes incluyen 3 meses de soporte gratuito.</p>
+                    </div>
+                </article>
+
+                <article class="questions__padding">
+                    <div class="questions__answer">
+                        <h3 class="questions__title">¿Por qué trabajar contigo si eres nuevo?
+                            <span class="questions__arrow">
+                                <img src="./images/arrow.svg" class="questions__img">
+                            </span>
+                        </h3>
+
+                        <p class="questions__show">
+                            Porque ofrezco:
+                            Precios introductorios,
+                            Atención 100% personalizada,
+                            Técnicas actualizadas sin vicios de la rutina.
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <section class="questions__offer">
+                <h2 class="subtitle">Agenda una consulta gratuita</h2>
+                <p class="questions__copy">Hoy mismo y recibe:  
+
+                    <a class="questions__copy__bar">- Análisis detallado de tu proyecto.</a> 
+                    <a class="questions__copy__bar">- Propuesta de diseño inicial.</a>  
+                    <a class="questions__copy__bar">- Estimación de tiempo y costo.</a>  
+                </p>
+                <a href="#contact-form" class="cta">Contactar ahora</a>
+            </section>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <section class="footer__container container">
+            <nav class="nav nav--footer">
+                <h2 class="footer__title">Designify Studio.</h2>
+
+                <ul class="nav__link nav__link--footer">
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Inicio</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Acerca de</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Contacto</a>
+                    </li>
+                    <li class="nav__items">
+                        <a href="#" class="nav__links">Blog</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <form class="footer__form" id="contact-form">
+                <h2 class="footer__newsletter">Contacto Directo</h2>
+                <div class="form__group">
+                    <input type="text" id="name" class="form__input" placeholder=" " required>
+                    <label for="name" class="form__label">Nombre completo</label>
+                    <span class="form__line"></span>
+                </div>
+
+                <div class="form__group">
+                    <input type="email" id="email" class="form__input" placeholder=" " required>
+                    <label for="email" class="form__label">Correo electrónico</label>
+                    <span class="form__line"></span>
+                </div>
+
+                <div class="form__group">
+                    <textarea id="message" class="form__textarea" placeholder=" " rows="4" required></textarea>
+                    <label for="message" class="form__label">Tu mensaje</label>
+                </div>
+
+                <button type="submit" class="cta cta--form">
+                    <span class="btn-text">Enviar Mensaje</span>
+                    <i class="fas fa-paper-plane btn-icon"></i>
+                </button>
+
+                <div class="form__success" id="form-success">
+                    <i class="fas fa-check-circle"></i>
+                    <p>¡Mensaje enviado con éxito!</p>
+                </div>
+            </form>
+        </section>
+
+        <section class="footer__copy container">
+            <h3 class="footer__copyright">Derechos reservados &copy; Fatin</h3>
+        </section>
+    </footer>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="./js/animation.js"></script>
+    <script src="./js/slider.js"></script>
+    <script src="./js/questions.js"></script>
+    <script src="./js/menu.js"></script>
+    <script src="./js/formulario.js"></script>
+</body>
+
+</html>

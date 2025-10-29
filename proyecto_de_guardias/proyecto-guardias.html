@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Guardias - Instituto los Manantiales</title>
+
+<!-- Tipografía -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg: #ffffff;
+    --text: #0b0b0b;
+    --muted: #6b7280;
+    --blue-dark: #334155;
+    --blue: #0274be;
+    --card: #f8fafc;
+    --glass: rgba(51,65,85,0.06);
+    --radius: 14px;
+    --nav-height: 72px;
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    
+    /* Nuevas variables para modo oscuro */
+    --primary: #0274be;
+    --primary-light: #4da8da;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+  }
+
+  /* Modo oscuro */
+  [data-theme="dark"] {
+    --bg: #121212;
+    --text: #f0f0f0;
+    --muted: #a0a0a0;
+    --blue-dark: #4da8da;
+    --blue: #4da8da;
+    --card: #1e1e1e;
+    --glass: rgba(255,255,255,0.08);
+    --primary: #4da8da;
+    --primary-light: #6bb9e6;
+    --secondary: #6c757d;
+    --light: #2d2d2d;
+    --dark: #f8f9fa;
+  }
+
+  html,body{ 
+    height:100%; 
+    margin:0; 
+    background:var(--bg); 
+    color:var(--text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .app {
+    max-width:480px; 
+    height:100vh; 
+    margin:0 auto;
+    display:flex; 
+    flex-direction:column;
+    border-left:1px solid rgba(0,0,0,0.03); 
+    border-right:1px solid rgba(0,0,0,0.03);
+    background:linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg) 95%, var(--primary) 5%) 100%);
+    transition: all 0.3s ease;
+  }
+
+  /* Pantalla de inicio/login */
+  .login-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--blue-dark) 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    transition: opacity 0.5s ease;
+  }
+  
+  .login-container {
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+    margin-right: 35px;
+  }
+  
+  .login-logo {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: var(--primary);
+  }
+  
+  .login-subtitle {
+    color: var(--muted);
+    margin-bottom: 30px;
+    font-size: 14px;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .form-group {
+    text-align: left;
+  }
+  
+  .form-label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: var(--text);
+    font-size: 14px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: var(--card);
+    color: var(--text);
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(2, 116, 190, 0.2);
+  }
+  
+  .login-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+  }
+  
+  .login-btn:hover {
+    background: var(--blue-dark);
+    transform: translateY(-2px);
+  }
+  
+  .theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 10vh;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+  }
+
+  /* HEADER */
+  header.app-header{
+    display:flex; 
+    align-items:center; 
+    justify-content:space-between;
+    padding:12px 16px; 
+    gap:12px;
+    background:linear-gradient(90deg,var(--blue-dark), color-mix(in srgb, var(--blue) 30%, var(--blue-dark) 70%));
+    color:#fff; 
+    border-bottom-left-radius:18px; 
+    border-bottom-right-radius:18px;
+    box-shadow: 0 6px 18px rgba(51,65,85,0.12);
+    position:relative;
+  }
+  
+  .header-left { 
+    display:flex; 
+    align-items:center; 
+    gap:12px; 
+  }
+  
+  .avatar {
+    width:44px; 
+    height:44px; 
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--primary-light),var(--primary));
+    display:flex; 
+    align-items:center; 
+    justify-content:center;
+    font-weight:700; 
+    box-shadow:0 4px 10px rgba(2,20,58,0.18);
+  }
+  
+  .greeting { 
+    font-size:14px; 
+    opacity:0.95; 
+  }
+  
+  .teacher-name { 
+    font-weight:700; 
+    font-size:16px; 
+    margin-top:2px; 
+  }
+  
+  .icon-btn { 
+    background:transparent; 
+    border:0; 
+    color:rgba(255,255,255,0.95); 
+    padding:8px; 
+    border-radius:10px; 
+    cursor:pointer; 
+  }
+  
+  .icon-btn:active{ 
+    transform:translateY(1px); 
+    opacity:0.9; 
+  }
+
+  main.app-main{ 
+    flex:1; 
+    overflow:auto; 
+    padding:14px; 
+    padding-bottom: calc(var(--nav-height) + 18px); 
+  }
+  
+  .card{ 
+    background:var(--card); 
+    border-radius:12px; 
+    padding:12px; 
+    box-shadow: 0 6px 18px rgba(16,24,40,0.04); 
+    margin-bottom:12px; 
+    transition: all 0.3s ease;
+  }
+  
+  h2.section-title{ 
+    margin:0 0 8px 0; 
+    font-size:15px; 
+    color:var(--blue-dark); 
+  }
+
+  /* Bandeja notificaciones */
+  #notifPanel{
+    display:none; 
+    position:absolute; 
+    top:70px; 
+    right:10px; 
+    width:280px; 
+    z-index:100;
+    border:1px solid rgba(0,0,0,0.08); 
+    border-radius:12px;
+    background:var(--bg); 
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+  }
+
+  /* LISTA DE GUARDIAS */
+  .guard-list { 
+    display:flex; 
+    flex-direction:column; 
+    gap:10px; 
+  }
+  
+  .guard {
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    padding:12px;
+    border-radius:12px;
+    background:linear-gradient(180deg,var(--bg), color-mix(in srgb, var(--bg) 95%, var(--primary) 5%));
+    border:1px solid var(--glass);
+    transition: all 0.3s ease;
+  }
+  
+  .guard .time { 
+    font-weight:700; 
+    color:var(--blue-dark); 
+    min-width:64px; 
+  }
+  
+  .guard .meta { 
+    flex:1; 
+  }
+  
+  .guard .meta .class { 
+    font-weight:600; 
+  }
+  
+  .guard .meta .sub { 
+    color:var(--muted); 
+    font-size:13px; 
+    margin-top:4px; 
+  }
+  
+  .guard .actions { 
+    display:flex; 
+    gap:8px; 
+    margin-left:6px; 
+  }
+
+  .btn {
+    border:0; 
+    padding:8px 12px; 
+    border-radius:10px; 
+    font-weight:600; 
+    cursor:pointer;
+    display:inline-flex; 
+    align-items:center; 
+    gap:8px; 
+    font-size:13px;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-accept { 
+    background:var(--primary); 
+    color:#fff; 
+    box-shadow: 0 6px 14px rgba(2,100,180,0.15); 
+  }
+  
+  .btn-absent { 
+    background:var(--bg); 
+    color:var(--blue-dark); 
+    border:1px solid rgba(51,65,85,0.08); 
+  }
+
+  .badge { 
+    background:var(--primary); 
+    color:#fff; 
+    padding:6px 8px; 
+    border-radius:999px; 
+    font-size:12px; 
+    font-weight:700; 
+  }
+
+  /* BOTON DE NAVEGACION */
+  nav.bottom-nav {
+    position:fixed;
+    left:50%;
+    transform:translateX(-50%);
+    bottom:10px;
+    width:calc(100% - 32px);
+    max-width:480px;
+    height:var(--nav-height);
+    background:linear-gradient(180deg, color-mix(in srgb, var(--bg) 90%, transparent 10%), color-mix(in srgb, var(--bg) 95%, transparent 5%));
+    border-radius:18px;
+    box-shadow:0 12px 30px rgba(16,24,40,0.08);
+    display:flex;
+    align-items:center;
+    justify-content:space-around;
+    padding:8px 8px;
+    z-index:40;
+    backdrop-filter: blur(10px);
+  }
+  
+  .nav-item{
+    display:flex; 
+    flex-direction:column; 
+    align-items:center; 
+    justify-content:center; 
+    gap:6px;
+    text-decoration:none; 
+    color:var(--muted); 
+    font-size:12px; 
+    width:64px; 
+    cursor:pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-item svg { 
+    width:22px; 
+    height:22px; 
+    display:block; 
+  }
+  
+  .nav-item.active { 
+    color:var(--primary); 
+    transform:translateY(-6px); 
+  }
+  
+  .nav-item.active .dot { 
+    width:28px; 
+    height:28px; 
+    border-radius:8px; 
+    background:linear-gradient(135deg,var(--primary),var(--blue-dark)); 
+    box-shadow:0 6px 14px rgba(2,100,180,0.16); 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    color:#fff; 
+  }
+
+  /* Agenda weekly scroller */
+  .week-row { 
+    display:flex; 
+    overflow:auto; 
+    gap:10px; 
+    padding-bottom:6px; 
+  }
+  
+  .day {
+    min-width:82px; 
+    text-align:center; 
+    padding:10px; 
+    border-radius:12px; 
+    background:transparent;
+    border:1px solid transparent;
+    transition: all 0.3s ease;
+  }
+  
+  .day.today { 
+    background:linear-gradient(180deg,color-mix(in srgb, var(--primary) 10%, transparent 90%), color-mix(in srgb, var(--primary) 5%, transparent 95%)); 
+    border:1px solid rgba(2,100,180,0.12); 
+  }
+  
+  .event { 
+    margin-top:8px; 
+    font-size:13px; 
+    padding:8px; 
+    border-radius:10px; 
+    background:var(--card); 
+    border:1px solid rgba(2,20,58,0.04); 
+  }
+
+  /* Perfil */
+  .profile-grid { 
+    display:grid; 
+    grid-template-columns: auto 1fr; 
+    gap:12px; 
+    align-items:center; 
+  }
+  
+  .profile-info { 
+    display:flex; 
+    flex-direction:column; 
+    gap:6px; 
+  }
+  
+  .muted { 
+    color:var(--muted); 
+    font-size:13px; 
+  }
+
+  .row { 
+    display:flex; 
+    align-items:center; 
+    gap:8px; 
+  }
+  
+  .spacer { 
+    flex:1; 
+  }
+  
+  .small { 
+    font-size:13px; 
+  }
+  
+  .pill { 
+    font-size:12px; 
+    padding:6px 8px; 
+    border-radius:999px; 
+    background:rgba(3,116,190,0.08); 
+    color:var(--primary); 
+    font-weight:700; 
+  }
+
+  /* PARTE DE MOVIL */
+  @media(min-width:720px){
+    .app { 
+      border-radius:18px; 
+      box-shadow:0 18px 50px rgba(16,24,40,0.06); 
+      margin-top:14px; 
+      margin-bottom:14px; 
+      height:92vh; 
+      overflow:hidden; 
+    }
+    
+    main.app-main { 
+      padding:20px; 
+    }
+  }
+</style>
+</head>
+<body>
+<!-- Pantalla de inicio/login -->
+<div class="login-screen" id="loginScreen">
+  <button class="theme-toggle" id="themeToggleLogin" title="Cambiar tema">
+    🌙
+  </button>
+  <div class="login-container">
+    <div class="login-logo">Instituto Los Manantiales</div>
+    <div class="login-subtitle">Sistema de Gestión de Guardias</div>
+    
+    <form class="login-form" id="loginForm">
+      <div class="form-group">
+        <label class="form-label" for="userName">Tu nombre</label>
+        <input type="text" id="userName" class="form-input" placeholder="Ingresa tu nombre completo" required>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="userEmail">Tu e-mail</label>
+        <input type="email" id="userEmail" class="form-input" placeholder="ejemplo@instituto.com" required>
+      </div>
+      
+      <div class="form-group">
+        <label class="form-label" for="userPassword">Tu contraseña</label>
+        <input type="password" id="userPassword" class="form-input" placeholder="Crea una contraseña segura" required>
+      </div>
+      
+      <button type="submit" class="login-btn">Comenzar</button>
+    </form>
+    
+  </div>
+</div>
+
+<div class="app" id="app" style="display: none;">
+  <header class="app-header">
+    <div class="header-left">
+      <div class="avatar" id="avatar">JP</div>
+      <div>
+        <div class="greeting" id="greeting">Buenos días</div>
+        <div class="teacher-name" id="displayName">Profesor/a Nombre</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" title="Cambiar tema" id="themeToggle">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 3v1M12 20v1M3 12h1M20 12h1M5.636 5.636l.707.707M17.657 17.657l.707.707M5.636 18.364l.707-.707M17.657 6.343l.707-.707" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="icon-btn" title="Notificaciones" id="btnNotif" aria-label="Notificaciones">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zM6 20v-1a4 4 0 014-4h4a4 4 0 014 4v1" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Bandeja notificaciones -->
+    <div id="notifPanel" class="card">
+      <h3 style="margin:0 0 8px 0;">Notificaciones</h3>
+      <div id="notifList" class="muted small">No tienes notificaciones.</div>
+    </div>
+  </header>
+
+  <main class="app-main" id="main">
+    <!-- INICIO -->
+    <section id="inicioSection">
+        <div class="card">
+            <div class="row" style="justify-content:space-between;align-items:flex-start;">
+                <div>
+                    <h2 class="section-title">Inicio</h2>
+                    <div class="muted small">Resumen rápido del día</div>
+                </div>
+                <div style="text-align:right;">
+                    <div class="muted small" id="fechaHoy"></div>
+                    <div class="badge" id="badgeGuardias">0</div>
+                </div>
+            </div>
+        </div>
+
+         <div class="card">
+        <h3 style="margin:0 0 8px 0">Próximas acciones</h3>
+        <div class="row" style="justify-content:space-between;">
+          <div>
+            <div class="muted small">Siguiente guardia</div>
+            <div style="font-weight:700;margin-top:6px;" id="nextGuard">—</div>
+          </div>
+          <div>
+            <div class="muted small">Estado</div>
+            <div class="pill" id="statusToday">Sin confirmar</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Aquí: lista de guardias de hoy / placeholder si no hay -->
+      <div class="card">
+        <h3 style="margin:0 0 8px 0">Guardias hoy</h3>
+        <div id="todayGuards" class="guard-list"></div>
+        <div id="noGuards" class="muted small" style="display:none;">Hoy no tienes guardias.</div>
+      </div>
+
+      <!-- Horario de hoy (resumen) -->
+      <div class="card">
+        <h3 style="margin:0 0 8px 0">Horario de hoy</h3>
+        <div id="todaySchedule"></div>
+      </div>
+    </section>
+
+    <!-- AGENDA -->
+    <section id="agendaSection" style="display:none;">
+      <div class="card">
+        <h2 class="section-title">Agenda semanal</h2>
+        <div class="muted small">Desplaza para ver la semana</div>
+
+        <div style="height:12px;"></div>
+        <div class="week-row" id="weekRow">
+          <!-- días inyectados -->
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin-bottom:8px;">Hoy — Agenda detallada</h3>
+        <div id="dailyAgenda">
+          <!-- items -->
+        </div>
+      </div>
+    </section>
+
+    <!-- GUARDIAS -->
+    <section id="guardiasSection" style="display:none;">
+      <div class="card">
+        <h2 class="section-title">Guardias</h2>
+        <div class="muted small">Aquí puedes aceptar, rechazar o marcar ausente.</div>
+      </div>
+      <div id="allGuardsList" class="card" style="padding:12px;">
+        <!-- listado completo -->
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section id="perfilSection" style="display:none;">
+      <div class="card">
+        <div class="profile-grid">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;">
+            <div class="avatar" id="avatarBig" style="width:78px;height:78px;border-radius:16px;font-size:22px;">JP</div>
+            <button class="btn btn-absent" id="editProfileBtn" style="padding:8px 10px;">Editar perfil</button>
+          </div>
+          <div class="profile-info">
+            <div id="fullName" style="font-weight:800;font-size:17px">Profesor/a Nombre</div>
+            <div class="muted small" id="subjects">Asignaturas: —</div>
+            <div class="muted small" id="courses">Cursos: —</div>
+            <div style="margin-top:8px;" id="desc">Descripción: —</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opciones -->
+    <div class="card">
+      <h3 style="margin-bottom:8px;">Opciones</h3>
+      <div class="row" style="gap:12px; flex-wrap:wrap;">
+        <button class="btn btn-absent" id="addAbsenceBtn">➕ Agregar falta</button>
+        <button class="btn btn-absent" id="cancelAbsenceBtn">❌ Cancelar falta</button>
+      </div>
+    </div>
+
+    <!-- Datos de usuario -->
+    <div class="card">
+      <h3 style="margin-bottom:8px;">Datos del usuario</h3>
+      <div class="row" style="justify-content:space-between;">
+        <div>
+          <div class="muted small">Correo</div>
+          <div id="emailUser" style="font-weight:600">profesor@instituto.com</div>
+        </div>
+        <div class="pill" id="userRole">Profesor</div>
+      </div>
+      <div style="margin-top:12px;">
+        <div><span class="muted small">Horario:</span> <span id="userSchedule">Mañana</span></div>
+        <div><span class="muted small">Faltas:</span> <span id="userAbsences">0</span></div>
+        <div><span class="muted small">Justificadas:</span> <span id="userJustified">0</span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- NAV -->
+  <nav class="bottom-nav" role="navigation" aria-label="Barra de navegación">
+    <div class="nav-item active" data-section="inicioSection" id="navInicio" role="button" tabindex="0">
+      <div class="dot" style="display:flex;align-items:center;justify-content:center;border-radius:8px;">🏠</div>
+      <div  style="font-size:12px;margin-top:6px;">Inicio</div>
+    </div>
+
+    <div class="nav-item" data-section="guardiasSection" id="navGuardias" role="button" tabindex="0">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M6 7v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>Guardias</div>
+    </div>
+    <div class="nav-item" data-section="agendaSection" id="navAgenda" role="button" tabindex="0">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.2"/></svg>
+      <div>Agenda</div>
+    </div>
+    <div class="nav-item" data-section="perfilSection" id="navPerfil" role="button" tabindex="0">
+      <div>👤</div>
+      <div>Perfil</div>
+    </div>
+  </nav>
+</div>
+
+<script>
+// ========== NUEVAS FUNCIONALIDADES ==========
+
+// Gestión del tema (claro/oscuro)
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('appTheme', newTheme);
+  
+  // Actualizar icono del botón de tema
+  const themeIcon = document.querySelector('#themeToggle svg path');
+  if (themeIcon) {
+    themeIcon.setAttribute('d', newTheme === 'dark' 
+      ? 'M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z' 
+      : 'M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM12 3v1M12 20v1M3 12h1M20 12h1M5.636 5.636l.707.707M17.657 17.657l.707.707M5.636 18.364l.707-.707M17.657 6.343l.707-.707');
+  }
+  
+  // Actualizar icono del botón de tema en login
+  const themeToggleLogin = document.getElementById('themeToggleLogin');
+  if (themeToggleLogin) {
+    themeToggleLogin.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+// Cargar tema guardado
+function loadTheme() {
+  const savedTheme = localStorage.getItem('appTheme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  // Actualizar iconos según el tema cargado
+  const themeToggleLogin = document.getElementById('themeToggleLogin');
+  if (themeToggleLogin) {
+    themeToggleLogin.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+  }
+}
+
+// Gestión del login
+function handleLogin(event) {
+  event.preventDefault();
+  
+  const userName = document.getElementById('userName').value;
+  const userEmail = document.getElementById('userEmail').value;
+  const userPassword = document.getElementById('userPassword').value;
+  
+  // Validación básica
+  if (!userName || !userEmail || !userPassword) {
+    alert('Por favor, completa todos los campos');
+    return;
+  }
+  
+  // Guardar datos del usuario
+  const userData = {
+    name: userName,
+    email: userEmail,
+    initials: getInitials(userName)
+  };
+  localStorage.setItem('userData', JSON.stringify(userData));
+  
+  // Ocultar pantalla de login y mostrar la app
+  const loginScreen = document.getElementById('loginScreen');
+  const app = document.getElementById('app');
+  
+  loginScreen.style.opacity = '0';
+  setTimeout(() => {
+    loginScreen.style.display = 'none';
+    app.style.display = 'flex';
+    
+    // Actualizar datos del usuario en la app
+    updateUserData(userData);
+  }, 500);
+}
+
+// Actualizar datos del usuario en la interfaz
+function updateUserData(userData) {
+  document.getElementById('displayName').textContent = userData.name;
+  document.getElementById('fullName').textContent = userData.name;
+  document.getElementById('emailUser').textContent = userData.email;
+  
+  const avatar = document.getElementById('avatar');
+  const avatarBig = document.getElementById('avatarBig');
+  
+  if (avatar) avatar.textContent = userData.initials;
+  if (avatarBig) avatarBig.textContent = userData.initials;
+}
+
+// Verificar si ya hay datos de usuario guardados
+function checkUserData() {
+  const userData = localStorage.getItem('userData');
+  if (userData) {
+    const parsedData = JSON.parse(userData);
+    updateUserData(parsedData);
+    
+    // Ocultar login y mostrar app
+    document.getElementById('loginScreen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+  }
+}
+
+// ========== CÓDIGO ORIGINAL (sin cambios) ==========
+
+const TEACHER_NAME = "Ester Laura Muñoz Martínez";
+/* -------------- Helpers de fecha -------------- */
+function pad(n){ return n<10?'0'+n:n; }
+function combineTodayTime(hm){
+  const d = new Date();
+  const [h,m] = hm.split(':').map(Number);
+  d.setHours(h, m, 0, 0);
+  return d.toISOString();
+}
+function addDaysToToday(days, hm){
+  const d = new Date();
+  d.setDate(d.getDate() + days);
+  const [h,m] = hm.split(':').map(Number);
+  d.setHours(h, m, 0, 0);
+  return d.toISOString();
+}
+function formatTimeISO(iso){
+  const d = new Date(iso);
+  return pad(d.getHours()) + ':' + pad(d.getMinutes());
+}
+function formatDateLong(d){
+  return d.toLocaleDateString('es-ES', { weekday:'long', day:'numeric', month:'short' });
+}
+function getInitials(name){
+  return name.split(' ').map(p=>p[0]||'').slice(0,2).join('').toUpperCase();
+}
+
+/* ---------------- Datos de ejemplo ---------------- */
+const sampleData = {
+  teacherInitials: getInitials(TEACHER_NAME),
+  subjects: ["Matemáticas", "Física"],
+  courses: ["2ºB", "3ºA", "4ºC"],
+  description: "Apasionada por la enseñanza. Coordinadora de proyectos STEAM.",
+  // Guardias y agenda
+  guards: [
+    { id: 'g1', time: combineTodayTime('10:00'), class: "2ºB Matemáticas", substituteFor: "Prof. García", room: "Aula 12" },
+    { id: 'g2', time: combineTodayTime('12:00'), class: "3ºA Historia", substituteFor: "Prof. López", room: "Aula 6" },
+    { id: 'g3', time: addDaysToToday(1, '09:00'), class: "4ºC Inglés", substituteFor: "Prof. Ruiz", room: "Aula 9" }
+  ],
+  schedule: [
+    { id:'s1', time: combineTodayTime('08:00'), title: "Matemáticas 2ºB" },
+    { id:'s2', time: combineTodayTime('09:00'), title: "Física 3ºA" },
+    { id:'s3', time: combineTodayTime('11:00'), title: "Recreo" },
+  ]
+};
+
+/* ---------------- Persistencia ---------------- */
+const STORAGE_KEY = 'guardias_app_state_v1';
+function loadState(){
+  try{
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw ? JSON.parse(raw) : { accepted: {}, absent: {} };
+  }catch(e){ return { accepted:{}, absent:{} }; }
+}
+function saveState(s){ localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); }
+let state = loadState();
+
+/* -------------- Inicialización UI -------------- */
+const appElement = document.getElementById('app');
+const displayName = document.getElementById('displayName');
+const avatar = document.getElementById('avatar');
+const avatarBig = document.getElementById('avatarBig');
+const greetingEl = document.getElementById('greeting');
+const fechaHoyEl = document.getElementById('fechaHoy');
+const badgeGuardias = document.getElementById('badgeGuardias');
+
+// Actualizar con datos del usuario si existen
+const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+if (userData.name) {
+  displayName.textContent = userData.name;
+  avatar.textContent = userData.initials;
+  avatarBig.textContent = userData.initials;
+} else {
+  displayName.textContent = TEACHER_NAME;
+  avatar.textContent = sampleData.teacherInitials;
+  avatarBig.textContent = sampleData.teacherInitials;
+}
+
+/* Fecha y saludo */
+function actualizarHeader(){
+  const now = new Date();
+  const hour = now.getHours();
+  let saludo = 'Hola';
+  if (hour < 12) saludo = 'Buenos días';
+  else if (hour < 19) saludo = 'Buenas tardes';
+  else saludo = 'Buenas noches';
+  greetingEl.textContent = saludo;
+  fechaHoyEl.textContent = formatDateLong(now);
+}
+actualizarHeader();
+setInterval(actualizarHeader, 60*1000);
+
+/* Render guardias del día */
+const todayGuardsEl = document.getElementById('todayGuards');
+const noGuardsEl = document.getElementById('noGuards');
+const nextGuardEl = document.getElementById('nextGuard');
+const statusTodayEl = document.getElementById('statusToday');
+
+function isSameDayISO(iso){
+  const d = new Date(iso);
+  const now = new Date();
+  return d.getFullYear()===now.getFullYear() && d.getMonth()===now.getMonth() && d.getDate()===now.getDate();
+}
+function renderTodayGuards(){
+  if(!todayGuardsEl || !nextGuardEl || !statusTodayEl || !noGuardsEl) return;
+  todayGuardsEl.innerHTML = '';
+  const todayGuards = sampleData.guards.filter(g=>isSameDayISO(g.time)).sort((a,b)=>new Date(a.time)-new Date(b.time));
+  badgeGuardias.textContent = String(todayGuards.length);
+  if(todayGuards.length===0){
+    noGuardsEl.style.display='block';
+    nextGuardEl.textContent='—';
+    statusTodayEl.textContent='Sin guardias';
+    return;
+  } else {
+    noGuardsEl.style.display='none';
+  }
+
+  // next guard
+  const upcoming = todayGuards.find(g=>new Date(g.time) > new Date());
+  nextGuardEl.textContent = upcoming ? `${formatTimeISO(upcoming.time)} — ${upcoming.class}` : 'No hay próximas (posiblemente ya pasaron)';
+  const anyAccepted = todayGuards.some(g=>state.accepted[g.id]);
+  statusTodayEl.textContent = anyAccepted ? 'Confirmado' : 'Sin confirmar';
+
+  todayGuards.forEach(g=>{
+    const div = document.createElement('div');
+    div.className = 'guard';
+    div.innerHTML = `
+      <div class="time">${formatTimeISO(g.time)}</div>
+      <div class="meta">
+        <div class="class">${g.class}</div>
+        <div class="sub">Sustituye a: ${g.substituteFor} · ${g.room}</div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-accept" data-id="${g.id}">${ state.accepted[g.id] ? 'Aceptada' : 'Aceptar' }</button>
+        <button class="btn btn-absent" data-id="${g.id}" style="white-space:nowrap;">${ state.absent[g.id] ? 'Ausente' : 'Ausente' }</button>
+      </div>
+    `;
+    todayGuardsEl.appendChild(div);
+  });
+}
+
+/* seccion de guardias */
+const allGuardsList = document.getElementById('allGuardsList');
+function renderAllGuards(){
+  if(!allGuardsList) return;
+  allGuardsList.innerHTML = '';
+  sampleData.guards.sort((a,b)=>new Date(a.time)-new Date(b.time)).forEach(g=>{
+    const status = state.absent[g.id] ? 'Ausente' : (state.accepted[g.id] ? 'Aceptada' : 'Pendiente');
+    const el = document.createElement('div');
+    el.style.display = 'flex';
+    el.style.justifyContent = 'space-between';
+    el.style.alignItems = 'center';
+    el.style.padding = '10px 0';
+    el.style.borderBottom = '1px dashed rgba(0,0,0,0.04)';
+    el.innerHTML = `
+      <div style="flex:1">
+        <div style="font-weight:700">${formatTimeISO(g.time)} · ${g.class}</div>
+        <div class="muted small">${g.room} · Sustituye a ${g.substituteFor}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-left:12px;align-items:flex-end">
+        <div class="muted small">${status}</div>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-accept" data-id="${g.id}">${ state.accepted[g.id] ? 'Aceptada' : 'Aceptar' }</button>
+          <button class="btn btn-absent" data-id="${g.id}">Ausente</button>
+        </div>
+      </div>
+    `;
+    allGuardsList.appendChild(el);
+  });
+}
+
+/* Agenda semanal */
+const weekRow = document.getElementById('weekRow');
+const dailyAgenda = document.getElementById('dailyAgenda');
+function renderWeek(){
+  if(!weekRow) return;
+  weekRow.innerHTML = '';
+  const today = new Date();
+  for(let i=-2; i<=4; i++){
+    const d = new Date();
+    d.setDate(today.getDate()+i);
+    const dayBox = document.createElement('div');
+    dayBox.className = 'day';
+    if (d.toDateString() === today.toDateString()) dayBox.classList.add('today');
+    const short = d.toLocaleDateString('es-ES', { weekday:'short' });
+    const daynum = d.getDate();
+    dayBox.innerHTML = `<div style="font-weight:700">${short}</div><div style="margin-top:6px">${daynum}</div>`;
+    const events = sampleData.guards.concat(sampleData.schedule).filter(ev => {
+      const evd = new Date(ev.time);
+      return evd.getFullYear()===d.getFullYear() && evd.getMonth()===d.getMonth() && evd.getDate()===d.getDate();
+    }).slice(0,2);
+    events.forEach(ev=>{
+      const evEl = document.createElement('div');
+      evEl.className = 'event';
+      evEl.textContent = `${formatTimeISO(ev.time)} · ${ev.class || ev.title}`;
+      dayBox.appendChild(evEl);
+    });
+    dayBox.addEventListener('click', ()=>{ showDayDetail(d); });
+    weekRow.appendChild(dayBox);
+  }
+}
+function showDayDetail(d){
+  if(!dailyAgenda) return;
+  const items = sampleData.schedule.concat(sampleData.guards).filter(ev => {
+    const evd = new Date(ev.time);
+    return evd.getFullYear()===d.getFullYear() && evd.getMonth()===d.getMonth() && evd.getDate()===d.getDate();
+  }).sort((a,b)=>new Date(a.time)-new Date(b.time));
+  renderDaily(items, d);
+}
+function renderDaily(items, d){
+  if(!dailyAgenda) return;
+  dailyAgenda.innerHTML = '';
+  if(items.length===0){
+    dailyAgenda.innerHTML = `<div class="muted small">No hay actividades para ${formatDateLong(d)}</div>`;
+    return;
+  }
+  items.forEach(it=>{
+    const el = document.createElement('div');
+    el.style.padding='10px 8px';
+    el.style.borderBottom='1px solid rgba(0,0,0,0.04)';
+    el.innerHTML = `<div style="font-weight:700">${formatTimeISO(it.time)} · ${it.title || it.class}</div><div class="muted small">${it.room || ''}</div>`;
+    dailyAgenda.appendChild(el);
+  });
+}
+
+/* Perfil info render */
+if (userData.name) {
+  document.getElementById('fullName').textContent = userData.name;
+} else {
+  document.getElementById('fullName').textContent = TEACHER_NAME;
+}
+document.getElementById('subjects').textContent = 'Asignaturas: ' + sampleData.subjects.join(', ');
+document.getElementById('courses').textContent = 'Cursos: ' + sampleData.courses.join(', ');
+document.getElementById('desc').textContent = sampleData.description || 'Descripción: —';
+
+function renderTodaySchedule(){
+  const el = document.getElementById('todaySchedule');
+  if(!el) return;
+  el.innerHTML = '';
+  sampleData.schedule.forEach(s=>{
+    el.innerHTML += `<div style="padding:8px 0;border-bottom:1px dashed rgba(0,0,0,0.04)"><div style="font-weight:700">${formatTimeISO(s.time)} · ${s.title}</div></div>`;
+  });
+}
+
+/* ---------- Interacciones: aceptar / ausente ---------- */
+document.addEventListener('click', (ev)=>{
+  const target = ev.target.closest('button[data-id]');
+  if(!target) return;
+  const id = target.getAttribute('data-id');
+  if(target.classList.contains('btn-accept')){
+    state.accepted[id] = !state.accepted[id];
+    if(state.accepted[id]) delete state.absent[id];
+    saveState(state);
+    renderTodayGuards();
+    renderAllGuards();
+  } else if(target.classList.contains('btn-absent')){
+    state.absent[id] = !state.absent[id];
+    if(state.absent[id]) delete state.accepted[id];
+    saveState(state);
+    renderTodayGuards();
+    renderAllGuards();
+  }
+});
+
+/* ---------- Navegación inferior  ---------- */
+const navItems = document.querySelectorAll('.nav-item');
+navItems.forEach(nav=>{
+  nav.addEventListener('click', ()=>{ switchSection(nav.dataset.section); });
+  nav.addEventListener('keydown', (e)=>{ if(e.key==='Enter') switchSection(nav.dataset.section); });
+});
+function switchSection(sectionId){
+  ['inicioSection','agendaSection','guardiasSection','perfilSection'].forEach(id=>{
+    const el = document.getElementById(id);
+    if(el) el.style.display = (id===sectionId) ? '' : 'none';
+  });
+  document.querySelectorAll('.nav-item').forEach(n=> n.classList.toggle('active', n.dataset.section===sectionId));
+}
+
+/* ---------- Edit profile ---------- */
+document.getElementById('editProfileBtn').addEventListener('click', ()=>{
+  const currentName = document.getElementById('fullName').textContent;
+  const newName = prompt('Nombre completo', currentName);
+  if(newName){
+    document.getElementById('fullName').textContent = newName;
+    document.getElementById('displayName').textContent = newName;
+    document.getElementById('avatar').textContent = getInitials(newName);
+    document.getElementById('avatarBig').textContent = getInitials(newName);
+    
+    // Actualizar datos guardados
+    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    userData.name = newName;
+    userData.initials = getInitials(newName);
+    localStorage.setItem('userData', JSON.stringify(userData));
+  }
+});
+
+window.addEventListener('keydown', (e)=>{
+  if(e.key==='1') switchSection('inicioSection');
+  if(e.key==='2') switchSection('agendaSection');
+  if(e.key==='3') switchSection('guardiasSection');
+  if(e.key==='4') switchSection('perfilSection');
+});
+
+setInterval(()=>{ renderTodayGuards(); renderAllGuards(); }, 4000);
+
+/* -------- Notificaciones -------- */
+const notifPanel = document.getElementById('notifPanel');
+const notifList = document.getElementById('notifList');
+document.getElementById('btnNotif').addEventListener('click', ()=>{
+  notifPanel.style.display = notifPanel.style.display==='none' ? 'block' : 'none';
+});
+function pushNotification(msg){
+  if(notifList.textContent.includes("No tienes")) notifList.innerHTML="";
+  const div = document.createElement('div');
+  div.style.padding='6px 0';
+  div.textContent = "🔔 " + msg;
+  notifList.appendChild(div);
+}
+
+/* -------- Faltas -------- */
+let absences = { total:0, justified:0 };
+const absencesEl = document.getElementById('userAbsences');
+const justifiedEl = document.getElementById('userJustified');
+document.getElementById('addAbsenceBtn').addEventListener('click', ()=>{
+  absences.total++;
+  const justified = confirm("¿La falta está justificada?");
+  if(justified) absences.justified++;
+  updateAbsences();
+  pushNotification("Nueva falta registrada ("+(justified?"justificada":"injustificada")+")");
+});
+document.getElementById('cancelAbsenceBtn').addEventListener('click', ()=>{
+  if(absences.total>0){
+    absences.total--;
+    if(absences.justified>0) absences.justified--;
+    updateAbsences();
+    pushNotification("Una falta ha sido cancelada");
+  }
+});
+function updateAbsences(){
+  absencesEl.textContent = absences.total;
+  justifiedEl.textContent = absences.justified;
+  if(absences.total > absences.justified){
+    pushNotification("⚠️ Guardia automática asignada por falta injustificada");
+  }
+}
+updateAbsences();
+
+/* -------- Roles -------- */
+let currentRole = "Profesor"; // Profesor, Coordinador, Super Admin
+const roleEl = document.getElementById('userRole');
+function updateRole(role){
+  currentRole = role;
+  roleEl.textContent = role;
+  if(role==="Profesor"){ roleEl.style.background="#0274be22"; roleEl.style.color="#0274be";}
+  if(role==="Coordinador"){ roleEl.style.background="#facc1522"; roleEl.style.color="#b45309";}
+  if(role==="Super Admin"){ roleEl.style.background="#ef444422"; roleEl.style.color="#b91c1c";}
+}
+updateRole(currentRole);
+
+// ========== INICIALIZACIÓN DE NUEVAS FUNCIONALIDADES ==========
+
+// Event listeners para las nuevas funcionalidades
+document.getElementById('loginForm').addEventListener('submit', handleLogin);
+document.getElementById('themeToggle').addEventListener('click', toggleTheme);
+document.getElementById('themeToggleLogin').addEventListener('click', toggleTheme);
+
+// Cargar configuración al iniciar
+loadTheme();
+checkUserData();
+
+// Inicializaciones y primeras renderizaciones
+renderWeek();
+showDayDetail(new Date());
+renderTodayGuards();
+renderAllGuards();
+renderTodaySchedule();
+</script>
+</body>
+</html>

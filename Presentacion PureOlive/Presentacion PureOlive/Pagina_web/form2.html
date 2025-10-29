@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ciberseguridad</title>
+    <meta name="author" content="Fatin, Luli, Dani, Belén, Sara">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imagenes/icono.png.png">
+</head>
+<body id="cuerpo">
+    <div class="Formulario">
+    <h1>Iniciar sesión</h1>
+    <form method="post">
+        <div class="username">
+            <label>Nombre completo</label>
+            <input type="text" required name="username" placeholder="Introduce su nombre">
+        </div>
+        <div class="email">
+            <label>Correo electrónico</label>
+            <input type="email" required name="email" placeholder="Introduce su correo">
+        </div>
+        <div class="password">
+            <label>Contraseña</label>
+            <input type="password" required name="password" placeholder="Contraseña"
+            pattern="^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,10}$"
+            onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Debe contener entre 8 y 10 caracteres: (Digitos, minúsculas, mayúsculas, símbolos)' : '')">
+        </div>
+        <button type="submit">
+            <a href="https://aws.amazon.com/es/what-is/cybersecurity/">Iniciar sesión</a>
+        </button>
+    </form>
+    </div>
+</body>
+</html>
