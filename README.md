@@ -20,6 +20,13 @@ A modern, responsive portfolio website showcasing my journey as an IT Systems st
 
 ---
 
+## 🚀 Live Demo
+
+You can view the portfolio online here:  
+**[Live Demo](https://fatinbnch.github.io/Portofolio/)**  
+
+---
+
 ## ✨ Features
 
 - **🎨 Responsive Design** - Perfectly adapted for all devices
@@ -56,11 +63,6 @@ A modern, responsive portfolio website showcasing my journey as an IT Systems st
 </div>
 
 ---
-
-## 🚀 Live Demo
-
-You can view the portfolio online here:  
-**[Live Demo](https://fatinbenchiba.github.io)**  
 
 ## 📫 Let's Connect
 
