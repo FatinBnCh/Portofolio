@@ -1,6 +1,6 @@
 # Fatin-dev Portfolio
 
-![Portfolio Preview](https://via.placeholder.com/800x400/0f172a/00f0ff?text=Fatin+Ben+Chiba+Portfolio)
+![Portfolio Preview](./screenshot.png)
 
 ## 🌟 Welcome to My Portfolio
 
@@ -11,8 +11,6 @@ Hello, I'm Fatin Ben Chiba 👋
 
 ### 🚀 Problem Solver  
 *Expanding skills and discovering new ways to innovate*
-
-[![Download CV](https://img.shields.io/badge/Download-CV-00f0ff?style=for-the-badge&logo=adobeacrobatreader)](your-cv-link.pdf)
 
 ---
 
