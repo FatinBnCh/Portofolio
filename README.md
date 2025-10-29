@@ -64,8 +64,44 @@ A modern, responsive portfolio website showcasing my journey as an IT Systems st
 You can view the portfolio online here:  
 **[Live Demo](https://fatinbenchiba.github.io)**  
 
-Or run it locally:
-```bash
-git clone https://github.com/FatinBnCh/portfolio.git
-cd portfolio
-# Open index.html in your browser
+## 🎨 Key Sections
+
+### Hero Section
+- Animated typing text effect
+- Interactive technology orbit with rotating icons
+- Social media links
+- Download CV button
+
+### About Section
+- Personal introduction
+- Skills grid with technology tags
+- Animated code snippet
+
+### Projects Section
+- Four featured projects with:
+  - Web Services E-commerce
+  - Cibersecure Learning Portal
+  - Visual Serenity Screensaver
+  - Teacher Shift Manager App
+
+### Contact Section
+- Contact information
+- Working contact form with EmailJS integration
+- Social media links
+
+---
+
+## 📫 Let's Connect
+
+## 📫 Let's Connect
+
+<div align="center">
+
+[![Email](https://img.shields.io/badge/Email-benchibafatin@gmail.com-00f0ff?style=for-the-badge&logo=gmail)](mailto:benchibafatin@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Fatin_Ben_Chiba-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/fatin-ben-chiba-74211335a)
+[![GitHub](https://img.shields.io/badge/GitHub-FatinBnCh-181717?style=for-the-badge&logo=github)](https://github.com/FatinBnCh)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-34_613971166-25D366?style=for-the-badge&logo=whatsapp)](https://wa.me/34613971166)
+[![Instagram](https://img.shields.io/badge/Instagram-@fatin__w1-E4405F?style=for-the-badge&logo=instagram)](https://www.instagram.com/fatin_w1)
+[![Location](https://img.shields.io/badge/Location-Málaga,_Spain-8B0000?style=for-the-badge&logo=googlemaps)](https://maps.google.com/?q=Málaga,Spain)
+
+</div>
