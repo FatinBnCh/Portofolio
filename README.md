@@ -1,4 +1,4 @@
-no# Fatin-dev Portfolio
+# Fatin-dev Portfolio
 
 ![Portfolio Preview](./screenshot.png)
 
