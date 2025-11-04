@@ -1,4 +1,4 @@
-# Fatin-dev Portfolio
+no# Fatin-dev Portfolio
 
 ![Portfolio Preview](./screenshot.png)
 
@@ -70,9 +70,4 @@ You can view the portfolio online here:
 
 [![Email](https://img.shields.io/badge/Email-benchibafatin@gmail.com-00f0ff?style=for-the-badge&logo=gmail)](mailto:benchibafatin@gmail.com)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Fatin_Ben_Chiba-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/fatin-ben-chiba-74211335a)
-[![GitHub](https://img.shields.io/badge/GitHub-FatinBnCh-181717?style=for-the-badge&logo=github)](https://github.com/FatinBnCh)
-[![WhatsApp](https://img.shields.io/badge/WhatsApp-34_613971166-25D366?style=for-the-badge&logo=whatsapp)](https://wa.me/34613971166)
-[![Instagram](https://img.shields.io/badge/Instagram-@fatin__w1-E4405F?style=for-the-badge&logo=instagram)](https://www.instagram.com/fatin_w1)
-[![Location](https://img.shields.io/badge/Location-Málaga,_Spain-8B0000?style=for-the-badge&logo=googlemaps)](https://maps.google.com/?q=Málaga,Spain)
-
 </div>
